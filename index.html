@@ -274,7 +274,11 @@ details.admin summary { cursor: pointer; font-weight: 800; color: var(--muted); 
         p2.textContent = showing ? "• • •" : draws[mine.name].gets;
         b.textContent = showing ? "Покажи" : "Скрий";
       });
-      div.append(left, b); box.append(div);
+      const other = document.createElement("button"); other.className = "btn"; other.type = "button";
+      other.textContent = "Друг човек ще тегли от този телефон";
+      other.addEventListener("click", () => { saveLocal(null); me = null; render(); });
+      const btns = document.createElement("div"); btns.className = "row"; btns.append(b, other);
+      div.append(left, btns); box.append(div);
     } else box.hidden = true;
 
     // names
